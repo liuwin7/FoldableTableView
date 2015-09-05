@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  FoldableTableView
+
+  Created by topsci_ybma on 15/9/5.
+  Copyright © 2015年 topsci. All rights reserved.
+*/
+
+"personalItem" = "Personal Center";
+
+"vipFlightOrderItem" = "VIP Flight Order";
+"flightOrderItem" = "Flight Order";
+"mineOrderItem" = "Mine Order";
+
+"flightMessageItem" = "Flight Message";
+"systemMessageItem" = "System Message";
+"mineMessageItem" = "Mine Message";
+
+"feedbackItem" = "Feedback";
+
+"aboutUsItem" = "About Us";

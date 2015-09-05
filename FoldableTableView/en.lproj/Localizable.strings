@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  FoldableTableView
+
+  Created by topsci_ybma on 15/9/5.
+  Copyright © 2015年 topsci. All rights reserved.
+*/
+
+"personalItem" = "个人中心";
+
+"vipFlightOrderItem" = "VIP机票订单";
+"flightOrderItem" = "机票订单";
+"mineOrderItem" = "我的订单";
+
+"flightMessageItem" = "航班消息";
+"systemMessageItem" = "系统消息";
+"mineMessageItem" = "我的消息";
+
+"feedbackItem" = "意见反馈";
+
+"aboutUsItem" = "关于我们";
