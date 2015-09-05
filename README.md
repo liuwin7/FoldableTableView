@@ -10,4 +10,4 @@ let personalCenterItem = FoldItem(foldIdentifier: "personalItem", foldName:"Pers
 tableView.configureFoldMenuItems([personalCenterItem])
 
 // result
-<img source="">
+<img src=""  alt="" />
