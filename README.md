@@ -9,5 +9,6 @@ let personalCenterItem = FoldItem(foldIdentifier: "personalItem", foldName:"Pers
 //2. use above menu items to configure the fold tableview 
 tableView.configureFoldMenuItems([personalCenterItem])
 
-// result
-<img src=""  alt="" />
+// result 
+<br>
+<img src="animationView.gif"  alt="" />
