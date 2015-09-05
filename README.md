@@ -11,4 +11,4 @@ tableView.configureFoldMenuItems([personalCenterItem])
 
 // result 
 <br>
-<img src="animationView.gif"  alt="" />
+<img src="https://github.com/liuwin7/FoldableTableView/tree/master/FoldableTableView/animationView.gif"  alt="result" />
