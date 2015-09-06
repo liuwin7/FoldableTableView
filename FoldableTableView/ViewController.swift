@@ -25,7 +25,8 @@ class ViewController: UIViewController {
         
         // 我的订单
         let vipFlightOrderItem = FoldItem(foldIdentifier: "vipFlightOrderItem", foldName: NSLocalizedString("vipFlightOrderItem", comment: "VIP Flight order"))
-        let flightOrderItem = FoldItem(foldIdentifier: "flightOrderItem", foldName: NSLocalizedString("flightOrderItem", comment: "Flight Order"), subFoldItems: [vipFlightOrderItem])
+        let normalFlightOrderItem = FoldItem(foldIdentifier: "normalFlightOrderItem", foldName: NSLocalizedString("normalFlightOrderItem", comment: "Normal Flight Order"))
+        let flightOrderItem = FoldItem(foldIdentifier: "flightOrderItem", foldName: NSLocalizedString("flightOrderItem", comment: "Flight Order"), subFoldItems: [vipFlightOrderItem, normalFlightOrderItem])
         let mineOrderItem = FoldItem(foldIdentifier: "mineOrderItem", foldName: NSLocalizedString("mineMessageItem", comment: "Mine Message"), subFoldItems:[flightOrderItem])
         
         // 我的消息

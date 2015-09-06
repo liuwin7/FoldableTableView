@@ -9,6 +9,7 @@
 "personalItem" = "个人中心";
 
 "vipFlightOrderItem" = "VIP机票订单";
+"normalFlightOrderItem" = "普通机票订单";
 "flightOrderItem" = "机票订单";
 "mineOrderItem" = "我的订单";
 

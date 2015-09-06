@@ -9,6 +9,7 @@
 "personalItem" = "Personal Center";
 
 "vipFlightOrderItem" = "VIP Flight Order";
+"normalFlightOrderItem" = "Normal Flight Order";
 "flightOrderItem" = "Flight Order";
 "mineOrderItem" = "Mine Order";
 
