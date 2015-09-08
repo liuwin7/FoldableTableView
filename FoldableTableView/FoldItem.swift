@@ -19,31 +19,61 @@ class FoldItem {
     var subFoldItems: [FoldItem]?
     var superFoldItem: FoldItem?
 
-    init(foldIdentifier: String, foldName: String?, foldOpened: Bool, subFoldItems: [FoldItem]?) {
+    /// 保存identifier和item的映射关系
+    private var identifierFoldItem = [String: FoldItem]()
+    
+    init?(foldIdentifier: String, foldName: String?, foldOpened: Bool, subFoldItems: [FoldItem]?) {
         self.foldIdentifier = foldIdentifier
         self.foldName = foldName
         self.foldOpened = foldOpened
         self.subFoldItems = subFoldItems
         if let subItems = self.subFoldItems {
+            var allIdentifiders = Set<String>() // 临时保存当前节点的所有子节点的id
             for subItem in subItems {
+                // 有重复的foldIdentifier创建就会失败
+                let itemIdentifier = subItem.foldIdentifier
+                if allIdentifiders.contains(itemIdentifier) {
+                    return nil
+                }
+                allIdentifiders.insert(itemIdentifier)
+                identifierFoldItem[itemIdentifier] = subItem
                 subItem.superFoldItem = self
             }
+            self.foldOpened = false
         }
     }
     
-    convenience init(foldIdentifier: String, foldName: String?, subFoldItems: [FoldItem]?) {
+    convenience init?(foldIdentifier: String, foldName: String?, subFoldItems: [FoldItem]?) {
         self.init(foldIdentifier: foldIdentifier, foldName: foldName, foldOpened:false, subFoldItems: subFoldItems)
     }
 
-    convenience init(foldIdentifier: String, foldName: String?) {
-        self.init(foldIdentifier: foldIdentifier, foldName: foldName, subFoldItems: nil)
+    init(foldIdentifier: String, foldName: String?, subFoldItem: FoldItem) {
+        self.foldIdentifier = foldIdentifier
+        self.foldName = foldName
+        self.foldOpened = false
+        subFoldItem.superFoldItem = self
+        self.subFoldItems = [subFoldItem]
+    }
+    
+    init(foldIdentifier: String, foldName: String?) {
+        self.foldIdentifier = foldIdentifier
+        self.foldName = foldName
+        self.foldOpened = true
+        self.subFoldItems = nil
     }
     
     
     // MARK: - computed properties
     
-    var openedItemCount: Int {
-        return FoldItem.countFoldItem(self)
+    var allSubItems: [FoldItem] {
+        return Array(identifierFoldItem.values)
+    }
+    
+    var isVisible: Bool {
+        guard let superItem = self.superFoldItem else {
+            return false
+        }
+        return superItem.foldOpened
     }
     
     // fold level
@@ -67,6 +97,10 @@ class FoldItem {
         }
     }
     
+    func foldItem(identifier: String) ->FoldItem? {
+        return identifierFoldItem[identifier]
+    }
+    
     // MARK: - subscript
     
     subscript(index: Int) -> FoldItem? {
@@ -88,71 +122,10 @@ class FoldItem {
     }
     
     // MARK: - Private
-    
-    private class func countFoldItem(item: FoldItem?) ->Int {
-        guard let item = item else {
-            return 0
-        }
-        guard let subItems = item.subFoldItems else {
-            return 1
-        }
-        if !item.foldOpened {
-            return 1
-        } else {
-            var sum = 1
-            for subItem in subItems {
-                sum += countFoldItem(subItem)
-            }
-            return sum
-        }
-    }
-    
     private class func nodeLevel(item: FoldItem?) ->Int {
         guard let item = item else {
             return 0
         }
         return nodeLevel(item.superFoldItem) + 1
     }
-}
-
-typealias FoldMenuList = FoldItem
-
-extension FoldMenuList {
-    
-    convenience init(foldIdentifier: String) {
-        self.init(foldIdentifier: foldIdentifier, foldName: "", foldOpened:true, subFoldItems: nil)
-    }
-    
-    var allVisibleItems: [FoldItem]? {
-        guard let subItems = self.subFoldItems else {
-            return nil;
-        }
-        var visibleItems = [FoldItem]()
-        for item in subItems {
-            FoldMenuList.add(item, to: &visibleItems)
-        }
-        return visibleItems
-    }
-    
-    // MARK: - Private
-    private class func add(item: FoldItem?, inout to visibleItems: [FoldItem]) {
-        guard let item = item else {
-            return
-        }
-        guard let subItems = item.subFoldItems else {
-            visibleItems.append(item);
-            return
-        }
-        if !item.foldOpened {
-            visibleItems.append(item);
-            return
-        } else {
-            visibleItems.append(item);
-            for subItem in subItems {
-                add(subItem, to: &visibleItems)
-            }
-            return
-        }
-    }
-
 }

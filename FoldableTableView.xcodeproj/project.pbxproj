@@ -16,6 +16,7 @@
 		501730C21B9ABDC300FBA0E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 501730C01B9ABDC300FBA0E6 /* LaunchScreen.xib */; };
 		501730CE1B9ABDC300FBA0E6 /* FoldableTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501730CD1B9ABDC300FBA0E6 /* FoldableTableViewTests.swift */; };
 		501730D81B9ABE0D00FBA0E6 /* FoldableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501730D71B9ABE0D00FBA0E6 /* FoldableTableView.swift */; };
+		A9AD69771B9D4E9700F80C98 /* FoldItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AD69761B9D4E9700F80C98 /* FoldItemList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		501730CC1B9ABDC300FBA0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		501730CD1B9ABDC300FBA0E6 /* FoldableTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldableTableViewTests.swift; sourceTree = "<group>"; };
 		501730D71B9ABE0D00FBA0E6 /* FoldableTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldableTableView.swift; sourceTree = "<group>"; };
+		A9AD69761B9D4E9700F80C98 /* FoldItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldItemList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				501730B51B9ABDC300FBA0E6 /* Supporting Files */,
 				501730D71B9ABE0D00FBA0E6 /* FoldableTableView.swift */,
 				500858DC1B9ADCD70084BF00 /* FoldItem.swift */,
+				A9AD69761B9D4E9700F80C98 /* FoldItemList.swift */,
 			);
 			path = FoldableTableView;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				500858DD1B9ADCD70084BF00 /* FoldItem.swift in Sources */,
 				501730B81B9ABDC300FBA0E6 /* AppDelegate.swift in Sources */,
 				501730D81B9ABE0D00FBA0E6 /* FoldableTableView.swift in Sources */,
+				A9AD69771B9D4E9700F80C98 /* FoldItemList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

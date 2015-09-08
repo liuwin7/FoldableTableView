@@ -15,11 +15,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        self.configureFoldTableViewData()
+        tableView.configureItemList(confiureItemList())
     }
     
-    func configureFoldTableViewData() {
+    // MARK: - Fold TableView Datasourc
+    func confiureItemList() -> FoldItemList {
         // 个人中心
         let personalCenterItem = FoldItem(foldIdentifier: "personalItem", foldName:NSLocalizedString("personalItem", comment: "Personal Center"))
         
@@ -27,20 +27,30 @@ class ViewController: UIViewController {
         let vipFlightOrderItem = FoldItem(foldIdentifier: "vipFlightOrderItem", foldName: NSLocalizedString("vipFlightOrderItem", comment: "VIP Flight order"))
         let normalFlightOrderItem = FoldItem(foldIdentifier: "normalFlightOrderItem", foldName: NSLocalizedString("normalFlightOrderItem", comment: "Normal Flight Order"))
         let flightOrderItem = FoldItem(foldIdentifier: "flightOrderItem", foldName: NSLocalizedString("flightOrderItem", comment: "Flight Order"), subFoldItems: [vipFlightOrderItem, normalFlightOrderItem])
-        let mineOrderItem = FoldItem(foldIdentifier: "mineOrderItem", foldName: NSLocalizedString("mineMessageItem", comment: "Mine Message"), subFoldItems:[flightOrderItem])
+        guard let flightOrder = flightOrderItem else {
+            fatalError()
+        }
+        let mineOrderItem = FoldItem(foldIdentifier: "mineOrderItem", foldName: NSLocalizedString("mineOrderItem", comment: "Mine Order"), subFoldItem:flightOrder)
         
         // 我的消息
         let flightMessageItem = FoldItem(foldIdentifier: "flightMessageItem", foldName: NSLocalizedString("flightMessageItem", comment: "Flight Message"))
         let systemMessageItem = FoldItem(foldIdentifier: "systemMessageItem", foldName: NSLocalizedString("systemMessageItem", comment: "System Message"))
         let mineMessageItem = FoldItem(foldIdentifier: "mineMessageItem", foldName: NSLocalizedString("mineMessageItem", comment: "Mine Message"), subFoldItems: [flightMessageItem, systemMessageItem])
-        
+        guard let mineMessage = mineMessageItem else {
+            fatalError()
+        }
         // 意见反馈
         let feedbackItem = FoldItem(foldIdentifier: "feedbackItem", foldName: NSLocalizedString("feedbackItem", comment: "Feedback"))
         
         // 关于我们
         let aboutUsItem = FoldItem(foldIdentifier: "aboutUsItem", foldName: NSLocalizedString("aboutUsItem", comment: "About Us"))
         
-        tableView.configureFoldMenuItems([personalCenterItem, mineOrderItem, mineMessageItem, feedbackItem, aboutUsItem])
+        let itemList = FoldItemList(foldItems: [personalCenterItem, mineOrderItem, mineMessage, feedbackItem, aboutUsItem])
+        return itemList
+    }
+    
+    @IBAction func newMessageAction(sender: UIBarButtonItem) {
+        
     }
 
 }
